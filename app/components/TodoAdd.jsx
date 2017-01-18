@@ -10,6 +10,7 @@ var TodoAdd = React.createClass({
         }
         
         this.refs.todoText.value = '';
+        this.refs.todoText.focus = true;
     },
     render: function() {
         return(

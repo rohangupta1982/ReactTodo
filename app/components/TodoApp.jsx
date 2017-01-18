@@ -1,28 +1,12 @@
 var React = require('react');
 var TodoList = require('TodoList');
 var TodoAdd = require('TodoAdd');
+var TodoSearch = require('TodoSearch');
 
 var TodoApp = React.createClass({
     getInitialState: function() {
         return ({
-            todoList: [
-                {
-                    id: 1,
-                    text: 'Walk the dog'
-                },
-                {
-                    id: 2,
-                    text: 'Mow the lawn'
-                },
-                {
-                    id: 3,
-                    text: 'Wash the car'
-                },
-                {
-                    id: 4,
-                    text: 'Fill gas in the car'
-                }
-            ]
+            todoList: []
         });
     },
     handleAddTodo: function(todoText) {
@@ -40,6 +24,9 @@ var TodoApp = React.createClass({
             todoList: todoList
         });
     },
+    handleTodoSearch: function(todoSearchText,showTodosCompleted) {
+        
+    },
     render: function() {    
         return(
             <div>
@@ -47,6 +34,7 @@ var TodoApp = React.createClass({
                     <div>
                         <div className="row">
                             <div className="columns small-4 small-centered">
+                                <TodoSearch onTodoSearch={this.handleTodoSearch}/>
                                 <TodoList todoList={this.state.todoList}/>
                                 <TodoAdd onAddTodo={this.handleAddTodo}/>
                             </div>
