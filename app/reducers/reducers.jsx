@@ -33,7 +33,7 @@ export var todoReducer = function(state = [], action) {
                 }
             ];
         case 'TODO_COMPLETE':
-            state.map(function(todo) {
+            return state.map(function(todo) {
                 if(todo.id === action.id) {
                     return {
                         ...todo,

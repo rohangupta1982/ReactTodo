@@ -38,7 +38,7 @@ describe('Reducers', () => {
             var response = reducers.todoReducer(deepfreeze([]), deepfreeze(action));
             
             expect(response.length).toEqual(1);
-            expect(response[0].todoText).toEqual(action.todoText);
+            expect(response[0].text).toEqual(action.todoText);
         });
         
         it('should set todoComplete on a todo', () => {
@@ -54,7 +54,7 @@ describe('Reducers', () => {
                 id: addTodoResponse[0].id
             };
             
-            var todoCompleteResponse = reducers.todoReducer(deepfreeze([]), deepfreeze(todoCompleteAction));
+            var todoCompleteResponse = reducers.todoReducer(deepfreeze(addTodoResponse), deepfreeze(todoCompleteAction));
             
             expect(todoCompleteResponse.length).toEqual(1);
             expect(todoCompleteResponse[0].id).toEqual(todoCompleteAction.id);
