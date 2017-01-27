@@ -1,12 +1,17 @@
 var React = require('react');
 var moment = require('moment');
+var {connect} = require('react-redux');
+var actions = require('actions');
 
 var Todo = React.createClass({
     onStatusChange: function () {
-        this.props.onStatusChange(this.props.id);
+        var {id,dispatch} = this.props;
+        dispatch(actions.todoCompleteActionGenerator(id));
+        //this.props.onStatusChange(this.props.id);
     },
     render: function () {
         var {id, text, isComplete, createdOn, completedOn} = this.props;
+        console.log(id + ',' + isComplete);
         var todoClassName = isComplete ? 'todo todo-completed' : 'todo';
 
         var renderDate = function () {
@@ -37,4 +42,4 @@ var Todo = React.createClass({
     }
 });
 
-module.exports = Todo;
+module.exports = connect()(Todo);
